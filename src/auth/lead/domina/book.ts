@@ -7,6 +7,5 @@ export class Book {
         readonly status:boolean,
         readonly folio:string
     ) {
-
     }
 }
