@@ -1,15 +1,29 @@
-import { AuthRepository } from "../domain/authRepository";
+import { generateToken } from '../utils/jwt';
+import { comparePasswords } from '../utils/password';
+import { AuthRepository } from '../domain/authRepository';
+
+type AuthResponse = { 
+    status: 'success' | 'error', 
+    token?: string, 
+    message?: string 
+};
 
 export class AuthUseCase {
+    constructor(private authRepository: AuthRepository) {}
 
-    constructor(readonly authRepository:AuthRepository){}
-
-    async run(email:string,password:string) {
-        try {
-            return this.authRepository.login(email,password);
-        }catch(error){
-            return null;
+    async run(email: string, password: string): Promise<AuthResponse> {
+        const user = await this.authRepository.verifyUser(email, password);
+        if (user) {
+            const token = generateToken({ email: user.email });
+            return {
+                status: 'success',
+                token
+            };
+        } else {
+            return {
+                status: 'error',
+                message: 'Credenciales inválidas'
+            };
         }
     }
-
 }
