@@ -13,7 +13,6 @@ export class PgsqlBookRepository implements BookRepository {
         }
     }
 
-    // Lista a todos los libros 
     async listAllBooks(): Promise<Book[]> {
         try {
             const books = await BookModel.findAll();
@@ -23,8 +22,6 @@ export class PgsqlBookRepository implements BookRepository {
             return [];
         }
     }
-
-    // Lista los a todos los libros Inativos
     async listInactiveBooks(): Promise<Book[]> {
         try {
             

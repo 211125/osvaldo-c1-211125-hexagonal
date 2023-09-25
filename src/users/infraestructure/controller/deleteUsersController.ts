@@ -3,7 +3,6 @@ import { DeleteUserUseCase } from "../../application/deleteUsersUseCase";
 
 export class DeleteUserController {
     constructor(readonly deleteUserUseCase: DeleteUserUseCase) { }
-
     async run(req: Request, res: Response) {
         try {
             const { id } = req.params;
@@ -12,7 +11,7 @@ export class DeleteUserController {
             if (wasDeleted) {
                 return res.status(200).send({
                     status: "success",
-                    message: "Usuario eliminado exitosamente"
+                    message: "Usuario eliminado "
                 });
             }
 
