@@ -9,8 +9,8 @@ export const sequelize = new Sequelize({
     dialect: 'postgres',
     host: 'localhost',
     database: 'SOA',
-    username: 'postgres',
-    password: 'yeremi224',
+    username: 'angelito',
+    password: '211125',
     models: [BookModel, UserModel, ReviewModel],
 });
 

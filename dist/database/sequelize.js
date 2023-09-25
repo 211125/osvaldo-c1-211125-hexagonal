@@ -22,8 +22,8 @@ exports.sequelize = new sequelize_typescript_1.Sequelize({
     dialect: 'postgres',
     host: 'localhost',
     database: 'SOA',
-    username: 'postgres',
-    password: 'yeremi224',
+    username: 'angelito',
+    password: '211125',
     models: [BookModel_1.default, userModel_1.default, reviewModel_1.default],
 });
 function initializeDatabase() {
