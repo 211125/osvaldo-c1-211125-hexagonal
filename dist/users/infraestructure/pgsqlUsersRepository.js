@@ -39,7 +39,7 @@ class PgsqlUsersRepository {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const result = yield userModel_1.default.destroy({ where: { id } });
-                return result > 0; // Retorna true si se eliminó al menos un registro.
+                return result > 0;
             }
             catch (error) {
                 console.error("Error in PgsqlUsersRepository:", error);
@@ -88,7 +88,6 @@ class PgsqlUsersRepository {
     updatePassword(userId, newPassword) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                // Cifrar la nueva contraseña
                 const hashedPassword = yield bcrypt_1.default.hash(newPassword, 10);
                 const result = yield userModel_1.default.update({ password: hashedPassword }, { where: { id: userId } });
                 return !!result;

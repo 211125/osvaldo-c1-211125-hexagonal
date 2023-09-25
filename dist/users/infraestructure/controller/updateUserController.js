@@ -32,7 +32,7 @@ class UpdateUserController {
                             phone: updatedUser.phone,
                             status: updatedUser.status,
                         },
-                        message: "Usuario ha sido actualizado exitosamente"
+                        message: "Usuario actualizado exitosamente"
                     });
                 }
                 res.status(400).send({

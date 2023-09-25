@@ -28,7 +28,6 @@ class PgsqlBookRepository {
             }
         });
     }
-    // Lista a todos los libros 
     listAllBooks() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
@@ -41,7 +40,6 @@ class PgsqlBookRepository {
             }
         });
     }
-    // Lista los a todos los libros Inativos
     listInactiveBooks() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
