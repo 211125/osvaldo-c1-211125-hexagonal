@@ -3,13 +3,11 @@ import { addUsersController, getUserByPhoneController, listAllUsersController, d
 
 export const usersRouter = express.Router();
 
-// Ruta para agregar un nuevo usuario
 usersRouter.post(
     "/create",
     addUsersController.run.bind(addUsersController)
 );
 
-// Ruta para obtener todos los usuarios
 usersRouter.get(
     "/",
     listAllUsersController.run.bind(listAllUsersController)

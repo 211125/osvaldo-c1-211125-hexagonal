@@ -4,5 +4,5 @@ export interface UpdatableUserFields {
     last_name: string;
     email: string;
     phone: string;
-    status: string;
+    status: boolean;
 }

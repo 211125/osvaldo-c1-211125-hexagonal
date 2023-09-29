@@ -9,7 +9,6 @@ export class UpdatePasswordController {
             const { userId, newPassword } = req.body;
             const wasUpdated = await this.updatePasswordUseCase.run(userId, newPassword);
 
-            // Si se ha actualizado la contraseña con éxito, devuelve una respuesta positiva.
             if (wasUpdated) {
                 return res.status(200).send({
                     status: "success",
@@ -17,7 +16,6 @@ export class UpdatePasswordController {
                 });
             }
 
-            // En caso de que no se haya podido actualizar la contraseña.
             res.status(400).send({
                 status: "error",
                 message: "Error al actualizar la contraseña"

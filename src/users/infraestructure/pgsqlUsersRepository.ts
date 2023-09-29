@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 
 export class PgsqlUsersRepository implements UsersRepository {
 
-    async addUsers(name: string, last_name: string, email: string, password: string, phone: string, status: string): Promise<Users | null> {
+    async addUsers(name: string, last_name: string, email: string, password: string, phone: string,status: boolean): Promise<Users | null> {
         try {
             const createdUsers = await UserModel.create({ name, last_name, email, password, phone, status});
             return new Users(createdUsers.id, createdUsers.name, createdUsers.last_name, createdUsers.email, createdUsers.password, createdUsers.phone, createdUsers.status);
@@ -24,7 +24,7 @@ export class PgsqlUsersRepository implements UsersRepository {
     async deleteUserById(id: number): Promise<boolean> {
         try {
             const result = await UserModel.destroy({ where: { id } });
-            return result > 0; // Retorna true si se eliminó al menos un registro.
+            return result > 0;
         } catch (error) {
             console.error("Error in PgsqlUsersRepository:", error);
             return false;

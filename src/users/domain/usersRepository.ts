@@ -2,7 +2,7 @@ import { UpdatableUserFields } from "./updatableUserFields";
 import { Users } from "./users";
 
 export interface UsersRepository {
-    addUsers(name: string, last_name: string, email: string, password: string, phone: string, status: string): Promise<Users | null>;
+    addUsers(name: string, last_name: string, email: string, password: string, phone: string,status: boolean): Promise<Users | null>;
     getAllUsers(): Promise<Users[]>;
     deleteUserById(id: number): Promise<boolean>;
     getUserByPhone(phone: string): Promise<Users | null>;

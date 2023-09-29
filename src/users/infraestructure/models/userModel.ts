@@ -43,10 +43,11 @@ class UserModel extends Model {
     public phone!: string;
 
     @Column({
-        type: DataType.STRING(128),
-        allowNull: false
+        type: DataType.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
     })
-    public status!: string;
+    public status!: boolean;
     
 
 
