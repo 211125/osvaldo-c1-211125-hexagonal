@@ -22,7 +22,7 @@ export class PgsqlReviewRepository implements ReviewRepository {
     async deleteReviewById(id: number): Promise<boolean> {
         try {
             const result = await ReviewModel.destroy({ where: { id } });
-            return result > 0; 
+            return result > 0; // Retorna true si se eliminó al menos un registro.
         } catch (error) {
             console.error("Error in PgsqlReviewRepository:", error);
             return false;

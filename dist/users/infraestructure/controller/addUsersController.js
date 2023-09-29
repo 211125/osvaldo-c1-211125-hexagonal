@@ -22,6 +22,7 @@ class AddUsersController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let { name, last_name, email, password, phone, status } = req.body;
+                // Encriptar la contraseña
                 const saltRounds = 10;
                 password = yield bcrypt_1.default.hash(password, saltRounds);
                 let createdUsers = yield this.addUsersUseCase.run(name, last_name, email, password, phone, status);
@@ -32,17 +33,18 @@ class AddUsersController {
                             name: createdUsers.name,
                             last_name: createdUsers.last_name,
                             email: createdUsers.email,
+                            // No enviamos la contraseña encriptada en la respuesta
                             phone: createdUsers.phone,
                             status: createdUsers.status,
                         },
-                        message: "Usuario creado"
+                        message: "Usuario ha sido creado exitosamente"
                     });
                 }
                 res.status(400).send({
                     status: "error",
                     data: [],
                     validations: [],
-                    message: "Error al crear Usuario nuevo"
+                    message: "Error al crear Usuario nuevo, intentalo mas tarde"
                 });
             }
             catch (error) {

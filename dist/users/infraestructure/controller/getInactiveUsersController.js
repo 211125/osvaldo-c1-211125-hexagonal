@@ -22,13 +22,13 @@ class GetInactiveUsersController {
                     return res.status(200).send({
                         status: "success",
                         data: inactiveUsers,
-                        message: "Usuarios inactivos "
+                        message: "Usuarios inactivos recuperados exitosamente"
                     });
                 }
                 res.status(404).send({
                     status: "error",
                     data: [],
-                    message: "No hay usuarios inactivos"
+                    message: "No se encontraron usuarios inactivos"
                 });
             }
             catch (error) {

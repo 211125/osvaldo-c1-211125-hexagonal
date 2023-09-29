@@ -1,3 +1,6 @@
+
+
+// updatePasswordUseCase.ts
 import { UsersRepository } from "../domain/usersRepository";
 
 export class UpdatePasswordUseCase {

@@ -22,7 +22,7 @@ class DeleteUserController {
                 if (wasDeleted) {
                     return res.status(200).send({
                         status: "success",
-                        message: "Usuario eliminado "
+                        message: "Usuario eliminado exitosamente"
                     });
                 }
                 res.status(404).send({

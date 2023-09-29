@@ -38,7 +38,7 @@ class PgsqlReviewRepository {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const result = yield reviewModel_1.default.destroy({ where: { id } });
-                return result > 0;
+                return result > 0; // Retorna true si se eliminó al menos un registro.
             }
             catch (error) {
                 console.error("Error in PgsqlReviewRepository:", error);

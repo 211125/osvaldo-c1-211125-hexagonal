@@ -6,6 +6,7 @@ export interface UsersRepository {
     getAllUsers(): Promise<Users[]>;
     deleteUserById(id: number): Promise<boolean>;
     getUserByPhone(phone: string): Promise<Users | null>;
+
     getInactiveUsers(): Promise<Users[]>;
     updatePassword(userId: number, newPassword: string): Promise<boolean>;
     updateUser(user: UpdatableUserFields): Promise<Users | null>;

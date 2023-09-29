@@ -24,7 +24,7 @@ export class PgsqlUsersRepository implements UsersRepository {
     async deleteUserById(id: number): Promise<boolean> {
         try {
             const result = await UserModel.destroy({ where: { id } });
-            return result > 0;
+            return result > 0; // Retorna true si se eliminó al menos un registro.
         } catch (error) {
             console.error("Error in PgsqlUsersRepository:", error);
             return false;
@@ -74,8 +74,10 @@ export class PgsqlUsersRepository implements UsersRepository {
     
     
     
+    
     async updatePassword(userId: number, newPassword: string): Promise<boolean> {
         try {
+            // Cifrar la nueva contraseña
             const hashedPassword = await bcrypt.hash(newPassword, 10);
             const result = await UserModel.update({ password: hashedPassword }, { where: { id: userId } });
     
