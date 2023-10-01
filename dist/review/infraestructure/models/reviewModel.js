@@ -38,7 +38,7 @@ __decorate([
         type: sequelize_typescript_1.DataType.STRING(128),
         allowNull: false
     })
-], ReviewModel.prototype, "status", void 0);
+], ReviewModel.prototype, "review", void 0);
 __decorate([
     (0, sequelize_typescript_1.BelongsTo)(() => userModel_1.default)
 ], ReviewModel.prototype, "user", void 0);

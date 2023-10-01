@@ -1,8 +1,12 @@
 export class Review {
     constructor(
-        readonly id: number,
-        readonly userId: number,
-        readonly bookId: number,
-        readonly status: string
-    ) { }
+        public uuid: string,
+        public id_user: string,
+        public id_book: string,
+        public date: string,
+        public review:string,
+        public status:boolean
+    ) {
+        
+    }
 }

@@ -33,7 +33,6 @@ class AddUsersController {
                             name: createdUsers.name,
                             last_name: createdUsers.last_name,
                             email: createdUsers.email,
-                            // No enviamos la contraseña encriptada en la respuesta
                             phone: createdUsers.phone,
                             status: createdUsers.status,
                         },
@@ -44,7 +43,7 @@ class AddUsersController {
                     status: "error",
                     data: [],
                     validations: [],
-                    message: "Error al crear Usuario nuevo, intentalo mas tarde"
+                    message: "gmail no puede se null"
                 });
             }
             catch (error) {

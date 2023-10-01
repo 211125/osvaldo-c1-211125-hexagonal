@@ -16,9 +16,9 @@ class AddReviewController {
     }
     run(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { userId, bookId, status } = req.body;
+            const { userId, bookId, review } = req.body;
             try {
-                const newReview = yield this.addReviewUseCase.run(userId, bookId, status);
+                const newReview = yield this.addReviewUseCase.run(userId, bookId, review);
                 if (newReview) {
                     res.status(201).send(newReview);
                 }

@@ -17,8 +17,8 @@ class UpdateReviewController {
     }
     run(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id, userId, bookId, status } = req.body;
-            const reviewToUpdate = new review_1.Review(id, userId, bookId, status);
+            const { id, userId, bookId, review } = req.body;
+            const reviewToUpdate = new review_1.Review(id, userId, bookId, review);
             try {
                 const updatedReview = yield this.updateReviewUseCase.run(reviewToUpdate);
                 if (updatedReview) {

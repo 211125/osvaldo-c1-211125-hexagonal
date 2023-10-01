@@ -3,42 +3,15 @@ import { addBookController,listInactiveBooksController, listAllBooksController, 
 
 export const bookRouter = express.Router();
 
-// Ruta para agregar un nuevo libro
-bookRouter.post(
-    "/create",
-    addBookController.run.bind(addBookController)
-);
+bookRouter.post( "/create",  addBookController.run.bind(addBookController));
 
-// Ruta para listar todos los libros
-bookRouter.get(
-    "/",
-    listAllBooksController.run.bind(listAllBooksController)
-);
+bookRouter.get(    "/", listAllBooksController.run.bind(listAllBooksController));
 
-// Ruta para listar todos los libros inactivos
-bookRouter.get(
-    "/inactives",
-    listInactiveBooksController.run.bind(listInactiveBooksController)
-);
+bookRouter.get( "/inactives",  listInactiveBooksController.run.bind(listInactiveBooksController));
 
-// Rura para listar un libro por codigo
 bookRouter.get("/code/:code", getBookByCodeController.run.bind(getBookByCodeController));
+bookRouter.put("/update/:id",  updateBookController.run.bind(updateBookController));
 
+bookRouter.delete( "/delete/:id",  deleteBookController.run.bind(deleteBookController));
 
-// Ruta para Actualizar Un libro Por id
-bookRouter.put(
-    "/update/:id",
-    updateBookController.run.bind(updateBookController)
-);
-
-// Ruta para Eliminar Un libro por Id
-bookRouter.delete(
-    "/delete/:id",
-    deleteBookController.run.bind(deleteBookController)
-);
-
-//Ruta Para ver si Esta activo O Inativo el Libro
-bookRouter.get(
-    "/status/:id/", 
-    checkBookAvailabilityController.run.bind(checkBookAvailabilityController)
-);
+bookRouter.get( "/status/:id/",  checkBookAvailabilityController.run.bind(checkBookAvailabilityController));
