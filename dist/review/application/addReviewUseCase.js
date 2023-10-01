@@ -14,10 +14,10 @@ class AddReviewUseCase {
     constructor(reviewRepository) {
         this.reviewRepository = reviewRepository;
     }
-    run(userId, bookId, status) {
+    run(userId, bookId, review) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const newReview = yield this.reviewRepository.addReview(userId, bookId, status);
+                const newReview = yield this.reviewRepository.addReview(userId, bookId, review);
                 return newReview;
             }
             catch (error) {

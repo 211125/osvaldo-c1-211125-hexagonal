@@ -1,32 +1,30 @@
-// sequelize.ts
+import dotenv from "dotenv";
+import mysql from "mysql2/promise";
+import { Signale } from "signale";
 
-import { Sequelize } from 'sequelize-typescript';
-import BookModel from '../book/infraestructure/models/BookModel';
-import UserModel from '../users/infraestructure/models/userModel';
-import ReviewModel from '../review/infraestructure/models/reviewModel';
+const signale = new Signale();
+dotenv.config(); 
+const config = {
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    database: process.env.DB_DATABASE,
+    password: process.env.DB_PASSWORD,
+    waitForConnections: true,
+    connectionLimit: 10,
+};
 
-export const sequelize = new Sequelize({
-    dialect: 'postgres',
-    host: 'localhost',
-    database: 'SOA',
-    username: 'angelito',
-    password: '211125',
-    models: [BookModel, UserModel, ReviewModel],
-});
+const pool = mysql.createPool(config);
 
-export async function initializeDatabase() {
+export async function query(sql: string, params?: any[]) {
     try {
-        await sequelize.authenticate();
-        console.log('Conexión establecida correctamente.');
-        await sequelize.sync({ force: false });
-    } catch (err) {
-        console.error('No se pudo conectar a la base de datos:', err);
-        process.exit(1);  // Cierra la aplicación si hay un error de conexión
+        const conn = await pool.getConnection();
+        signale.success("Conexión exitosa a la BD");
+        const result = await conn.execute(sql, params);
+        conn.release();
+        return result;
+    } catch (error) {
+        console.log(process.env.DB_HOST); 
+        signale.error(error);
+        return null;
     }
 }
-
-
-
-
-
-

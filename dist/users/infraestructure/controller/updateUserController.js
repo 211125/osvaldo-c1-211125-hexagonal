@@ -23,7 +23,6 @@ class UpdateUserController {
                 });
                 if (updatedUser) {
                     return res.status(200).send({
-                        status: "success",
                         data: {
                             id: updatedUser.id,
                             name: updatedUser.name,

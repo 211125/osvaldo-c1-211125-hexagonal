@@ -16,11 +16,11 @@ exports.PgsqlReviewRepository = void 0;
 const review_1 = require("../domain/review");
 const reviewModel_1 = __importDefault(require("./models/reviewModel"));
 class PgsqlReviewRepository {
-    addReview(userId, bookId, status) {
+    addReview(userId, bookId, review) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const createdReview = yield reviewModel_1.default.create({ userId, bookId, status });
-                return new review_1.Review(createdReview.id, createdReview.userId, createdReview.bookId, createdReview.status);
+                const createdReview = yield reviewModel_1.default.create({ userId, bookId, review });
+                return new review_1.Review(createdReview.id, createdReview.userId, createdReview.bookId, createdReview.review);
             }
             catch (error) {
                 console.error("Error in PgsqlReviewRepository:", error);
@@ -31,7 +31,7 @@ class PgsqlReviewRepository {
     getAllReviews() {
         return __awaiter(this, void 0, void 0, function* () {
             const reviews = yield reviewModel_1.default.findAll();
-            return reviews.map(review => new review_1.Review(review.id, review.userId, review.bookId, review.status));
+            return reviews.map(review => new review_1.Review(review.id, review.userId, review.bookId, review.review));
         });
     }
     deleteReviewById(id) {
@@ -51,14 +51,14 @@ class PgsqlReviewRepository {
             const review = yield reviewModel_1.default.findOne({ where: { userId } });
             if (!review)
                 return null;
-            return new review_1.Review(review.id, review.userId, review.bookId, review.status);
+            return new review_1.Review(review.id, review.userId, review.bookId, review.review);
         });
     }
     getInactiveReviews() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const inactiveReviews = yield reviewModel_1.default.findAll({ where: { status: 'Inactivo' } });
-                return inactiveReviews.map(review => new review_1.Review(review.id, review.userId, review.bookId, review.status));
+                const inactiveReviews = yield reviewModel_1.default.findAll({ where: { review: 'Inactivo' } });
+                return inactiveReviews.map(review => new review_1.Review(review.id, review.userId, review.bookId, review.review));
             }
             catch (error) {
                 console.error("Error in PgsqlReviewRepository:", error);
@@ -73,7 +73,7 @@ class PgsqlReviewRepository {
                 if (updateCount > 0) {
                     const updatedReviewData = yield reviewModel_1.default.findByPk(review.id);
                     if (updatedReviewData) {
-                        return new review_1.Review(updatedReviewData.id, updatedReviewData.userId, updatedReviewData.bookId, updatedReviewData.status);
+                        return new review_1.Review(updatedReviewData.id, updatedReviewData.userId, updatedReviewData.bookId, updatedReviewData.review);
                     }
                 }
                 return null;

@@ -48,9 +48,8 @@ __decorate([
 ], UserModel.prototype, "phone", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.BOOLEAN,
-        allowNull: false,
-        defaultValue: false
+        type: sequelize_typescript_1.DataType.STRING(128),
+        allowNull: false
     })
 ], UserModel.prototype, "status", void 0);
 UserModel = __decorate([

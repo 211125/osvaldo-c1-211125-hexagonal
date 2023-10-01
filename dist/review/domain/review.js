@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Review = void 0;
 class Review {
-    constructor(id, userId, bookId, status) {
+    constructor(id, userId, bookId, review) {
         this.id = id;
         this.userId = userId;
         this.bookId = bookId;
-        this.status = status;
+        this.review = review;
     }
 }
 exports.Review = Review;

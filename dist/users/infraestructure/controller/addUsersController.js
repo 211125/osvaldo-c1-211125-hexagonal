@@ -22,31 +22,34 @@ class AddUsersController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let { name, last_name, email, password, phone, status } = req.body;
+                // Encriptar la contraseña
                 const saltRounds = 10;
                 password = yield bcrypt_1.default.hash(password, saltRounds);
                 let createdUsers = yield this.addUsersUseCase.run(name, last_name, email, password, phone, status);
                 if (createdUsers) {
                     return res.status(201).send({
-                        status: false,
+                        status: "success",
                         data: {
                             name: createdUsers.name,
                             last_name: createdUsers.last_name,
-                            password: createdUsers.password,
                             email: createdUsers.email,
                             phone: createdUsers.phone,
+                            status: createdUsers.status,
                         },
                         message: "Usuario ha sido creado exitosamente"
                     });
                 }
                 res.status(400).send({
+                    status: "error",
                     data: [],
                     validations: [],
-                    message: "Error al crear Usuario nuevo, intentalo mas tarde"
+                    message: "gmail no puede se null"
                 });
             }
             catch (error) {
                 console.error("Error in AddUsersController:", error);
                 res.status(500).send({
+                    status: "error",
                     message: "Error interno del servidor"
                 });
             }
