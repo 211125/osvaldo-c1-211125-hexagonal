@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Arisel-211119-hexagonal
 
 # Para ejecutar debe copilar primero
@@ -103,3 +104,7 @@ Las relaciones entre estas entidades serían las siguientes:
 - Un usuario puede tener una sola sesión activa a la vez, lo que implica una relación uno a uno entre Usuario y Autenticación.
 
 - Un usuario puede tener varios roles de autorización (por ejemplo, administrador y usuario normal), lo que implica una relación uno a muchos entre Usuario y Autorización.
+=======
+# 211125 Hernandez Gutierrez Osvaldo Angel
+https://identity.getpostman.com/handover/multifactor?user=19354765&handover_token=580eb55d-51d5-48f2-aa15-7aabfd8bc30f
+>>>>>>> 1ed3e55256a2171d3bd60414e34fc59cb45ee874
