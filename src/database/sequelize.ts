@@ -26,6 +26,7 @@ export const sequelize = new Sequelize({
 const pool = mysql.createPool(config);
 >>>>>>> dev
 
+
 export async function query(sql: string, params?: any[]) {
     try {
         const conn = await pool.getConnection();
